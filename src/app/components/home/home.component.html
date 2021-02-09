@@ -1,0 +1,105 @@
+<div class="body">
+    <div class="menu">
+        <nav class="nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-11">
+                        <a href="index.html" class="logo">
+                            <img src="../../../assets/images/logo.png" alt="logo">
+                            <span class="logo-text">
+                                REACT PIZZA
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="col-md-1">
+                        <div class="shopping-title">
+                            <h1><i class="fa fa-shopping-cart"></i></h1>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="line"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 product-detail">
+                    <div id="myBtnContainer">
+                        <button class="btn active" onclick="filterSelection('all')"> All</button>
+                        <button class="btn" onclick="filterSelection('chees')"> Chees</button>
+                        <button class="btn" onclick="filterSelection('meat')"> Meat</button>
+                        <button class="btn" onclick="filterSelection('fruits')">Fruits-Pizza</button>
+                    </div>
+
+                    <div class="tab-content" id="myTabContent">
+                        <!-- single tab -->
+                        <div class="tab-pane fade show active" id="all" role="tab-panel">
+                            <div class="tab-single">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="section-title">
+                                            <h2 id="products-type">All-pizza</h2>
+                                        </div>
+                                    </div>
+
+                                    <!-- start -->
+                                    <div class="col-xl-3 col-lg-4 col-md-4 col-12 my-2 chees pizza"
+                                        *ngFor="let pizza of pizzaData; let i = index">
+                                        <div id="pizza-product">
+                                            <div class="single-product">
+                                                <div class="product-img">
+                                                    <a href="#">
+                                                        <img src="{{pizza.image}}" class="img-fluid" alt="#">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-title">
+                                                <h3 class="text-center">{{pizza.name}}</h3>
+                                            </div>
+                                            <div class="myBtnContainer row" id="productInfo">
+                                                <button class="btn col-md-5 mt-2 pizzaType active">{{pizza.types.type1}}</button>
+                                                <button class="btn col-md-7 mt-2 pizzaType">{{pizza.types.type2}}</button>
+                                                <button class="btn col-md-4 mt-2 pizzaSize active">{{pizza.sizes.small}}sm</button>
+                                                <button class="btn col-md-4 mt-2 pizzaSize">{{pizza.sizes.norm}}sm</button>
+                                                <button class="btn col-md-4 mt-2 pizzaSize">{{pizza.sizes.big}}sm</button>
+    
+                                                <div class="con-price text-center col-md-12">
+                                                   {{pizza.price}}&#8381;
+                                                </div>
+                                                <div class="con-btn col-md-12">
+                                                    <button id="addCart" onclick="handleAdd(event)" class="add">
+                                                        Add to cart</button>
+                                                    <div class="con-input-btns">
+                                                        <button (click)="plusLess($event,'less',i)" class="less" id="minus">
+                                                            <i class="fa fa-minus"></i></button>
+                                                        <input class='result' type="text" value="1" disabled>
+                                                        <button (click)="plusLess($event,'plus',i)" class="less" id="plus">
+                                                            <i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <!--  -->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- container2 end -->
+        <div class="select">
+            
+        </div>
+    </div>
+</div>
+
+<script src="../../../assets/js/main.js"></script>

@@ -1,0 +1,58 @@
+.navbar {
+    background-color: rgb(0, 0, 80);
+    position: relative;
+}
+
+#searchBtn {
+    border-top-right-radius: 10%;
+    border-bottom-right-radius: 10%;
+}
+
+.activ {
+    color: #fff;
+    font-weight: bold;
+}
+
+.product-title {
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    border-top: 2px solid blue;
+    border-bottom: 2px solid blue;
+    margin:10px auto;
+}
+
+.product-text {
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    margin-top: 15px;
+}
+
+.nextIcons {
+    margin-top: 10px;
+}
+
+.nextIcons i:nth-child(1), 
+.nextIcons i:nth-child(2){
+    font-size: 20px;
+    padding: 10px;
+}
+
+#line {
+    height: 2px;
+    background-color: grey;
+    margin-top: 2px;
+}
+
+.product-salary,
+.product-name  {
+    text-align: center;
+    font-size: 20px;
+    margin: 10px;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.productBox:nth-child(2) .product-salary i{
+    color: red;
+}
