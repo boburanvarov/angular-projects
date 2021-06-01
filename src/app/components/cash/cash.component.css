@@ -1,0 +1,77 @@
+button {
+    margin-right: 10px;
+}
+
+.form-group {
+    margin-top: 30px;
+}
+
+.cash1 {
+    margin-left: 10px;
+    padding: 8px;
+}
+
+#date, .cause, .money {
+    margin-left: 10px;
+    padding: 4px;
+}
+
+#pay {
+    border: 1px solid green;
+    padding: 10px;
+}
+
+
+#costs{
+    border: 1px solid red;
+    padding: 10px;
+}
+
+#monitoring{
+    border: 1px solid skyblue;
+    padding: 10px;
+}
+
+.plus, .minus {
+    margin-left: 5px;
+}
+
+.save {
+    margin-top: 10px;
+}
+
+
+.pay-money, .costs-money{
+    margin: 100px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.tablePay{
+    margin: 20px;
+    margin-right: 60px;
+    font-weight: bold;
+}
+
+.tableCosts {
+    margin: 20px;
+    margin-left: 100px;
+    font-weight: bold;
+}
+
+.pay-money{
+    color: green;
+}
+
+.costs-money{
+    color: red;
+}
+
+table, tr, td, th {
+    border: 1px solid grey;
+    padding: 15px;
+    border-collapse: collapse;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+  }

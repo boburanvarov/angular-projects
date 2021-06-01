@@ -1,0 +1,125 @@
+<div class="container">
+    <button class="btn btn-success" (click)="openSection('pay')">Daromadlar</button>
+    <button class="btn btn-danger" (click)="openSection('costs')">Harajatlar</button>
+    <button class="btn btn-info" (click)="openSection('monitoring')">Monitoring</button>
+</div>
+
+<div class="container">
+
+    <section *ngIf="section == 'pay'" class="form-group">
+        <form [formGroup]="cashForm" (ngSubmit)="save('pay')">
+
+            <div formArrayName="cashElements">
+
+                <div id="pay" *ngFor="let item of cashElements.controls; let index = index" [formGroupName]="index">
+
+                    <input type="date" id="date" class="input" formControlName="date" required>
+                    <select class="cash1" formControlName="payment_type">
+                        <option value="naqd">Naqd</option>
+                        <option value="plastik">Plastik</option>
+                    </select>
+                    <input type="text" placeholder="Sababi" class="cause" formControlName="cause" required>
+                    <input type="number" placeholder="Summa" class="money" formControlName="money" required>
+                    <select class="cash1" formControlName="currency">
+                        <option value="sum">So'm</option>
+                        <option value="dollar">Dollar</option>
+                    </select>
+                    <a class="btn btn-success plus" (click)="add()"><i class="fa fa-plus"></i></a>
+                    <a *ngIf="this.cashElements.length > 1" class="btn btn-danger minus" (click)="remove(index)"><i
+                            class="fa fa-minus"></i></a>
+
+                </div>
+            </div>
+
+            <button class="btn btn-primary save" type="submit"
+                [disabled]="!cashForm.get('cashElements')?.valid">Saqlash</button>
+        </form>
+    </section>
+
+    <section *ngIf="section == 'costs'" class="form-group">
+        <form [formGroup]="cashForm" (ngSubmit)="save('costs')">
+
+            <div formArrayName="costsElements">
+
+                <div id="costs" *ngFor="let item of costsElements.controls; let index = index" [formGroupName]="index">
+
+                    <input type="date" id="date" class="input" formControlName="date" required>
+                    <select class="cash1" formControlName="payment_type">
+                        <option value="naqd">Naqd</option>
+                        <option value="plastik">Plastik</option>
+                    </select>
+                    <input type="text" placeholder="Sababi" class="cause" formControlName="cause" required>
+                    <input type="number" placeholder="Summa" class="money" formControlName="money" required>
+                    <select class="cash1" formControlName="currency">
+                        <option value="sum">So'm</option>
+                        <option value="dollar">Dollar</option>
+                    </select>
+                    <a class="btn btn-success plus" (click)="add()"><i class="fa fa-plus"></i></a>
+                    <a *ngIf="this.costsElements.length > 1" class="btn btn-danger minus" (click)="remove(index)"><i
+                            class="fa fa-minus"></i></a>
+
+                </div>
+            </div>
+
+            <button class="btn btn-primary save" type="submit"
+                [disabled]="!cashForm.get('costsElements')?.valid">Saqlash</button>
+        </form>
+    </section>
+
+    <section *ngIf="section == 'monitoring'" class="form-group">
+        <div id="monitoring" class="text-center">
+            <span class="pay-money" title="Jami Daromadlar"> {{sumPay | number}}</span>
+            <span class="costs-money" title="Jami Xarajatlar"> {{sumCosts | number}}</span>
+        </div>
+
+       <div class="tableButtons text-center">
+            <button class="btn btn-success tablePay" (click)="openSectionTable('payTable')">Daromadlar</button>
+            <button class="btn btn-danger tableCosts" (click)="openSectionTable('costsTable')">Harajatlar</button>
+       </div>
+
+        <!--  -->
+        <section *ngIf="sectionTable == 'payTable'" class="form-group">
+            <div id="pay">
+                <table>
+                    <tr>
+                        <th>Yil/Oy/Kun</th>
+                        <th>To'lov turi</th>
+                        <th>Sababi</th>
+                        <th>Summasi</th>
+                        <th>Pul birligi</th>
+                    </tr>
+                    <tr *ngFor="let data of pay">
+                        <td>{{data.date}}</td>
+                        <td>{{data.payment_type}}</td>
+                        <td>{{data.cause}}</td>
+                        <td>{{data.money}}</td>
+                        <td>{{data.currency}}</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section *ngIf="sectionTable == 'costsTable'">
+            <div id="costs">
+                <table>
+                    <tr>
+                        <th>Yil/Oy/Kun</th>
+                        <th>To'lov turi</th>
+                        <th>Sababi</th>
+                        <th>Summasi</th>
+                        <th>Pul birligi</th>
+                    </tr>
+                    <tr *ngFor="let data of costs">
+                        <td>{{data.date}}</td>
+                        <td>{{data.payment_type}}</td>
+                        <td>{{data.cause}}</td>
+                        <td>{{data.money}}</td>
+                        <td>{{data.currency}}</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+    </section>
+
+</div>

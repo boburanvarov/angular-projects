@@ -1,5 +1,5 @@
 <!-- Nav -->
-<nav class="navbar navbar-expand-lg main-navbar fixed-top bg-color main-navbar-color" id="main-navbar">
+<nav class="navbar navbar-expand-lg main-navbar bg-color main-navbar-color" id="main-navbar">
     <a href="#" class="navbar-brand text-white">b</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNav" aria-controls="nav"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -22,12 +22,13 @@
                         Tools
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <div *ngIf="showMenu != null && showMenu == true">
-                            <a class="dropdown-item" (click)="hide()" routerLink="/hello">Hello world</a>
-                            <a class="dropdown-item" (click)="hide()" routerLink="/pizza">Pizza</a>
-                            <a class="dropdown-item" (click)="hide()" routerLink="/football">Football</a>
-                            <a class="dropdown-item" (click)="hide()" routerLink="/shopping2">Shopping2 </a>
-
+                        <div>
+                            <a class="dropdown-item" routerLink="/hello">Hello world</a>
+                            <a class="dropdown-item" routerLink="/pizza">Pizza</a>
+                            <a class="dropdown-item" routerLink="/football">Football</a>
+                            <a class="dropdown-item" routerLink="/shopping2">Shopping2 </a>
+                            <a class="dropdown-item" routerLink="/cash">Cash</a>
+                            <a class="dropdown-item" routerLink="/form-page">Form</a>
                         </div>
                     </div>
                 </li>
@@ -37,7 +38,7 @@
 </nav>
 <!-- End of Nav -->
 
-
+<hr>
 
 
 <router-outlet></router-outlet>

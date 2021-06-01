@@ -12,76 +12,47 @@ export class HelloComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: ApiService
-  ){}
+  ) { }
 
   pizzaData = []
 
-  ngOnInit(){
+  ngOnInit() {
     console.log("hello");
 
-    this.getPizzaData();
-  
+    this.employeesList();
   }
 
-  getPizzaData(){
-    this.service.get().subscribe(resp => {
-
-      this.pizzaData = resp.body.pizzaData;
-
-      console.log(this.pizzaData);
-    });
-  }
-
-employeesForm = this.fb.group({
-  id:       [''],
-  name:     [''],
-  age:      [''],
-  salary:   [''],
-  position: ['']
-})
+  employeesForm = this.fb.group({
+    id: [''],
+    name: [''],
+    age: [''],
+    salary: [''],
+    position: ['']
+  })
 
   employeeInformation: any;
   viewProfile = false;
   title = 'qale bobur';
   editAction = false;
-  
+
   employees = [
     {
       id: 1,
-      name:"Javod",
+      name: "Javod",
       age: 25,
       salary: 3000,
       position: "manager",
       eyescolor: "Brown"
-    },
-    {
-      id: 2,
-      name:"Humoyun",
-      age: 18,
-      salary: 300,
-      position: "developer",
-      eyescolor: "Black"
-    },
-    {
-      id: 3,
-      name:"Xurwid",
-      age: 21,
-      salary: 300,
-      position: "developer",
-      eyescolor: "Brown"
-    },
-    {
-      id: 4,
-      name:"bobur",
-      age: 20,
-      salary: 300,
-      position: "developer",
-      eyescolor: "Green"
-    },
+    }
   ];
 
+  employeesList() {
+    this.employees = this.service.getEmployees();
+    localStorage.setItem('EmployeesList', JSON.stringify(this.employees));
+  }
 
-  save(action: boolean){
+
+  save(action: boolean) {
 
     let newEmployee = {
       id: this.employeesForm.value.id,
@@ -92,40 +63,44 @@ employeesForm = this.fb.group({
       eyescolor: this.employeesForm.value.eyescolor,
     }
 
-    if(!action){
-      // yangi qo'shadi
-      let id = this.employees[this.employees.length-1].id + 1;
+    if (!action) {
+      // yangi qo'shadi      
+      let id = this.employees.length > 0 ? this.employees[this.employees.length - 1].id + 1 : 1;
       newEmployee.id = id;
-      this.employees.push(newEmployee);      
+      this.employees.push(newEmployee);
     }
 
-    else{
+    else {
       // o'zgartirib saqlash
-      let index = this.employees.findIndex(e => e.id == newEmployee.id);      
+      let index = this.employees.findIndex(e => e.id == newEmployee.id);
       this.employees[index] = newEmployee;
     }
+
+    this.service.saveEmployees(this.employees);
   }
 
-  delete(data:any){
+  delete(data: any) {
     console.log(data);
-  
+
     let index = this.employees.indexOf(data);
-    if(index > -1){
+    if (index > -1) {
       this.employees.splice(index, 1);
     }
+
+    this.service.saveEmployees(this.employees);
   }
 
-  edit(data:any){
+  edit(data: any) {
     this.employeesForm.get('id')?.setValue(data.id);
     this.employeesForm.get('name')?.setValue(data.name);
     this.employeesForm.get('age')?.setValue(data.age);
     this.employeesForm.get('salary')?.setValue(data.salary);
     this.employeesForm.get('position')?.setValue(data.position);
 
-    this.editAction = true;    
+    this.editAction = true;
   }
 
-  profile(data:any){
+  profile(data: any) {
     this.viewProfile = true;
     this.employeeInformation = data;
     console.log(this.employeeInformation);

@@ -11,6 +11,9 @@ import { FootballComponent } from './components/football/football.component';
 import { HomeComponent } from './components/home/home.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { Shopping2Component } from './components/shopping2/shopping2.component';
+import { CashComponent } from './components/cash/cash.component';
+import { FormComponent } from './components/contact-form/form.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { Shopping2Component } from './components/shopping2/shopping2.component';
     FootballComponent,
     HomeComponent,
     MenuComponent,
-    Shopping2Component
+    Shopping2Component,
+    CashComponent,
+    FormComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserModule,
